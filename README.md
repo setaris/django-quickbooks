@@ -2,6 +2,8 @@
 django-quickbooks - An app for communicating with Quickbooks via Intuit Anywhere
 ==========================================================================================
 
+[![Build Status](https://travis-ci.org/grue/django-quickbooks.png)](https://travis-ci.org/grue/django-quickbooks)
+
 django-quickbooks handles communicating with the Intuit Anywhere API. Using
 this app, you can perform CRUD operations on any of the object classes
 supported by both Quickbooks Desktop and Quickbooks Online (*Note: Updates made
@@ -28,7 +30,17 @@ Installation
             'ACCESS_COMPLETE_URL': string
         }
 
-5. Add the setup javascript (example below assumes your namespace is
+5. You'll need to set up you Keyczar keychain now:
+   
+        mkdir /path/to/keys
+        keyczart create --location=/path/to/keys --purpose=crypt --name="A name"
+        keyczart addkey --location=/path/to/keys --status=primary
+
+6. Now add the key dir to your settings file:  
+
+        ENCRYPTED_FIELD_KEYS_DIR = "/path/to/keys"
+
+7. Add the setup javascript (example below assumes your namespace is
    'quickbooks' and that you have a template context variable 'base_url' (e.g.,
    http://example.com):
 
@@ -38,10 +50,10 @@ Installation
             grantUrl: '{{ base_url }}{% url quickbooks:quickbooks.views.request_oauth_token %}'
         });</script>
 
-6. Add the connect button HTML (perhaps in user preferences):
+8. Add the connect button HTML (perhaps in user preferences):
 
-        <ipp:connectToIntuit><ipp:connectToIntuit/>
+        <ipp:connectToIntuit></ipp:connectToIntuit>
 
-7. Add the blue dot menu HTML (must be visible on every page once connected):
+9. Add the blue dot menu HTML (must be visible on every page once connected):
 
         <ipp:blueDot></ipp:blueDot>
