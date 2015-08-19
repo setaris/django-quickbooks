@@ -9,6 +9,11 @@ from .models import QuickbooksToken, get_quickbooks_token
 from .api import QuickbooksApi, AuthenticationFailure
 from .signals import qb_connected
 
+try:
+    unicode
+except NameError:
+    unicode = str
+
 REQUEST_TOKEN_URL = 'https://oauth.intuit.com/oauth/v1/get_request_token'
 ACCESS_TOKEN_URL = 'https://oauth.intuit.com/oauth/v1/get_access_token'
 AUTHORIZATION_URL = 'https://appcenter.intuit.com/Connect/Begin'

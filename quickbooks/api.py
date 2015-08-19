@@ -1,4 +1,7 @@
-import urllib
+try:
+    from urllib import quote
+except ImportError:
+    from urllib.parse import quote
 
 from requests_oauthlib import OAuth1Session
 from django.conf import settings
@@ -104,7 +107,7 @@ class QuickbooksApi(object):
             It is similar to SQL.
         """
         # [todo] - add error handling for v3 query
-        constructed_url = "{}/company/{}/query?query={}".format(self.url_base, self.realm_id, urllib.quote(query))
+        constructed_url = "{}/company/{}/query?query={}".format(self.url_base, self.realm_id, quote(query))
         return self.session.get(constructed_url).json()
 
     def create(self, object_type, object_body):
