@@ -5,9 +5,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
-from quickbooks.models import QuickbooksToken, get_quickbooks_token
-from quickbooks.api import QuickbooksApi, AuthenticationFailure
-from quickbooks.signals import qb_connected
+from .models import QuickbooksToken, get_quickbooks_token
+from .api import QuickbooksApi, AuthenticationFailure
+from .signals import qb_connected
 
 REQUEST_TOKEN_URL = 'https://oauth.intuit.com/oauth/v1/get_request_token'
 ACCESS_TOKEN_URL = 'https://oauth.intuit.com/oauth/v1/get_access_token'
@@ -96,9 +96,8 @@ def blue_dot_menu(request):
 
     html = request.session.get(BLUE_DOT_CACHE_KEY)
     if not html:
-        html = request.session[BLUE_DOT_CACHE_KEY] = \
-            HttpResponse(QuickbooksApi(request.user).app_menu())
-    return html
+        html = request.session[BLUE_DOT_CACHE_KEY] = QuickbooksApi(request.user).app_menu()
+    return HttpResponse(html)
 
 
 @login_required

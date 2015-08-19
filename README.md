@@ -1,17 +1,14 @@
 ==========================================================================================
-django-quickbooks - An app for communicating with Quickbooks via Intuit Anywhere
+django-quickbooks - An app for communicating with Quickbooks via the Quickbooks API
 ==========================================================================================
 
-[![Build Status](https://travis-ci.org/grue/django-quickbooks.png)](https://travis-ci.org/grue/django-quickbooks)
+This project was made current by updates from the fork at [django-quickbooks-online](https://github.com/grue/django-quickbooks-online) which contains contributions from [setaris](https://github.com/setaris). django-quickbooks was originally developed by us, [hiidef](https://github.com/hiidef).
 
-django-quickbooks handles communicating with the Intuit Anywhere API. Using
+django-quickbooks handles communicating with the Quickbooks API. Using
 this app, you can perform CRUD operations on any of the object classes
-supported by both Quickbooks Desktop and Quickbooks Online (*Note: Updates made
-since forking have only been tested with Quickbooks Desktop.*).
+supported by both Quickbooks Desktop and Quickbooks Online.
 
-django-quickbooks knows very little about the actual API schema. That is, the
-user is responsible for creating and parsing the XML (though some tools are
-provided to make this easier).
+django-quickbooks knows very little about the actual API schema.
 
 Installation
 ============
