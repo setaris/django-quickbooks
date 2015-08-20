@@ -3,7 +3,6 @@ from django_extensions.db.fields.encrypted import EncryptedCharField
 from django.contrib.auth import get_user_model
 from django.conf import settings
 
-User = get_user_model()
 
 
 class QuickbooksToken(models.Model):
@@ -19,6 +18,7 @@ class MissingTokenException(Exception):
 
 
 def find_quickbooks_token(request_or_user):
+    User = get_user_model()
     if isinstance(request_or_user, User):
         user = request_or_user
     else:
