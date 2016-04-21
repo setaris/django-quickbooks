@@ -1,9 +1,10 @@
+from django.conf.urls import url
+
 from . import views
 
 urlpatterns = (
-    (r'^request_oauth_token/?$',    views.request_oauth_token),
-    (r'^get_access_token/?$',       views.get_access_token),
-    (r'^blue_dot_menu/?$',          views.blue_dot_menu),
-    (r'^disconnect/?$',             views.disconnect),
+    url(r'^request_oauth_token/?$',    views.request_oauth_token,  name='request_oauth_token'),
+    url(r'^get_access_token/?$',       views.get_access_token,     name='get_access_token'),
+    url(r'^blue_dot_menu/?$',          views.blue_dot_menu,        name='blue_dot_menu'),
+    url(r'^disconnect/?$',             views.disconnect,           name='disconnect'),
 )
-
