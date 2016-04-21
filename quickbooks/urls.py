@@ -1,9 +1,9 @@
-from django.conf.urls import patterns
+from . import views
 
-urlpatterns = patterns('quickbooks.views',
-    (r'^request_oauth_token/?$',    'request_oauth_token'),
-    (r'^get_access_token/?$',       'get_access_token'),
-    (r'^blue_dot_menu/?$',          'blue_dot_menu'),
-    (r'^disconnect/?$',             'disconnect'),
+urlpatterns = (
+    (r'^request_oauth_token/?$',    views.request_oauth_token),
+    (r'^get_access_token/?$',       views.get_access_token),
+    (r'^blue_dot_menu/?$',          views.blue_dot_menu),
+    (r'^disconnect/?$',             views.disconnect),
 )
 
