@@ -2,6 +2,8 @@ from django.conf.urls import url
 
 from . import views
 
+app_name = 'quickbooks'
+
 urlpatterns = (
     url(r'^request_oauth_token/?$',    views.request_oauth_token,  name='request_oauth_token'),
     url(r'^get_access_token/?$',       views.get_access_token,     name='get_access_token'),

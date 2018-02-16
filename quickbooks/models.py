@@ -6,7 +6,7 @@ from django.conf import settings
 
 
 class QuickbooksToken(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     access_token = EncryptedCharField(max_length=255)
     access_token_secret = EncryptedCharField(max_length=255)
     realm_id = models.CharField(max_length=64)
